@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: pricerComaprison.HibernateTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.697 s <<< FAILURE! - in pricerComaprison.HibernateTest
+saveTVTest  Time elapsed: 0.802 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at pricerComaprison.HibernateTest.saveTVTest(HibernateTest.java:164)
+
