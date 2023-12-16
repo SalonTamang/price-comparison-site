@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      header {
+        width: 100%;
+        height: 9.5vh;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+        background-color: white;
+      }
+
+      #block {
+        width: 100%;
+        height: 9.5vh;
+      }
+
+      #logo {
+        width: 170px;
+        height: 100%;
+      }
+
+      main {
+        /* width: 100px; */
+        padding: 0 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      nav > ul {
+        width: 300px;
+        display: flex;
+        list-style: none;
+        justify-content: space-evenly;
+        font-weight: 400;
+      }
+
+      .top-container {
+        margin: 0px auto;
+        background: url("images/displayPic.png");
+        background-repeat: no-repeat;
+        width: 90%;
+        height: 45vh;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        border-radius: 35px;
+      }
+
+      .info {
+        width: 350px;
+        height: 20vh;
+        color: white;
+      }
+
+      input[type="search"] {
+        width: 350px;
+        height: 40px;
+        padding: 0 20px;
+        border-radius: 15px;
+        outline: none;
+        text-indent: 10px;
+        border: none;
+      }
+
+      .bottom-container {
+        display: flex;
+        padding: 5px 0;
+      }
+
+      .bottom-left-container {
+        width: 370px;
+        height: 40vh; 
+        padding-left: 25px;    
+      }
+
+      .test {
+        width: 100%;
+        height: 30vh;
+        padding-top: 15px;
+        padding-left: 20px;
+
+      }
+    
+      .bottom-right-container {
+        display: block;
+        width: 700px;
+        height: 40vh;
+        margin-left: 0px;
+      }
+      .extra-info > h2 {
+        margin-left: 160px;
+      }
+      .categories {
+        display: flex;
+        justify-content: flex-end;
+        gap: 7px;
+        padding: 7px 20px;
+        width: 800px;
+        height: 190px;
+        /* border: 1px solid black; */
+      }
+      .category {
+        width: 155px;
+        height: 190px;
+       
+      }
+      .categoryImg {
+        width: 95%;
+        height: 90%;
+        border-radius: 7px;
+      }
+      .categoryName {
+        margin-top: -8px;
+        text-align: center;
+
+      }
+
+      /* The default was for the HP spectra 360 with screen width 1260 and would be great for computer with screen size 15 inch  */
+      @media (min-width: 1290px) {
+        .top-container {
+          margin: 10px 40px;
+          margin-bottom: 40px;
+        }
+        .bottom-container {
+          margin: 10px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img id="logo" src="/images/logoNew.png" />
+      <nav>
+        <ul>
+          <li>About us</li>
+          <li>Guide</li>
+          <li>EX</li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="block"></div>
+
+    <main>
+      <div class="top-container">
+        <div class="info">
+          <h2>Best deal on your favourite Bikes.</h2>
+          <h3>At best buys compare prices on more than 3000 bikes.</h3>
+          <input type="search" placeholder="Search bikes" />
+        </div>
+      </div>
+
+      <div class="bottom-container">
+        <div class="bottom-left-container" >
+          <div class="test">
+            <h2 class="details">About Our Website</h2>
+            <ul style="list-style: none;">
+              <li>Ride Smart, Save Bigger</li>
+              <li>Unleash Irresistible Bike Deals</li>
+              <li>Find Your Perfect Ride, Your Perfect Price</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-right-container">
+          <div class="extra-info">
+            <h2>Select from the following categories</h2>
+          </div>
+          <div class="left-colmn">
+            
+          </div>
+          <div class="categories">
+            <div class="category">
+              <img class="categoryImg" src="/images/roadBike.png" alt="" />
+              <p class="categoryName">Road Bikes</p>
+            </div>
+            <div class="category">
+              <img class="categoryImg" src="/images/electricBike.png" alt="" />
+              <p class="categoryName">Electric Bikes</p>
+            </div>
+            <div class="category">
+              <img class="categoryImg" src="images/mountainBike.png" alt="" />
+              <p class="categoryName">Mountain Bikes</p>
+            </div>
+            <div class="category">
+              <img class="categoryImg" src="images/gravelBike.png" alt="" />
+              <p class="categoryName">Gravel Bikes</p>
+            </div>
+            <div class="category">
+              <img class="categoryImg" src="images/kidsBike.png" alt="" />
+              <p class="categoryName">Kids Bikes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Script for the landing page -->
+    <script>
+      const inputElement = document.querySelector("input");
+
+      inputElement.addEventListener("search", async () => {
+        const inputText = inputElement.value;
+
+        if (inputText === "") {
+          console.log("Enter the bike model first");
+          return; // Exit the function if input is empty
+        }
+
+        // Send the input text to the server
+        try {
+          window.location.href = `http://localhost:3000/results?search_query=${inputText}`;
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
+    </script>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+              * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: 'Open Sans', sans-serif;
+      }
+
+      h3 {
+          text-align: center;
+      }
+
+      .body-section {
+          display: flex
+      }
+
+      .filter-section {
+          width: 250px;
+          height: 400px;
+          border: 1px solid grey;
+          margin: 5px 5px;
+          display: flex;
+          flex-direction: column;
+          cd
+      }
+
+      .display-section {
+          padding: 2px 0px;
+          margin: 5px 5px;
+          width: 70%;
+
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 5px;
+          border: 1px solid grey
+      }
+
+      div .product-section {
+          border: 1px solid rgb(79, 74, 74);
+          width: 270px;
+          height: 350px;
+          border-radius: none
+      }
+
+      div img {
+          width: 80%;
+          height: 70%;
+      }
+
+      .search-area {
+          display: flex;
+          justify-content: center;
+          margin: 2px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h3>Data from the bikes table from mySql</h3>
+      <div class="search-area">
+        <input type="text" />
+        <button onclick="check()" id="searchButton">Search</button>
+      </div>
+      <div class="body-section">
+        <div class="filter-section">
+          <div>
+            <label for="type">Filter by type:</label>
+            <select id="type" onchange="filterBicycles()">
+              <option value="all">All</option>
+              <option value="mountain">Mountain</option>
+              <option value="road">Road</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div id="sort-by-price">
+            <p>Price</p>
+            <input type="range" name="volume" />
+          </div>
+        </div>
+        <div class="display-section"></div>
+      </div>
+
+      
+    </main>
+
+    <script>
+      const displaySection = document.querySelector(".display-section");
+
+      function check() {
+        const inputText = document.querySelector("input").value;
+
+        if (inputText === "") {
+          console.log("Enter the bike model first");
+          return; // Exit the function if input is empty
+        }
+        fetch(`http://localhost:3000/search/in?q=${inputText}`)
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+            data.forEach((element) => {
+              const eachProduct = document.createElement("div");
+              eachProduct.classList.add("product-section");
+
+              const productName = document.createElement("p");
+              productName.innerText = element.name;
+
+              const imgElement = document.createElement("img");
+              imgElement.setAttribute("src", element.image);
+
+              eachProduct.appendChild(imgElement);
+              eachProduct.appendChild(productName);
+              const listSection = document
+                .createElement("li")
+                .appendChild(eachProduct);
+
+              displaySection.appendChild(listSection);
+            });
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html> -->

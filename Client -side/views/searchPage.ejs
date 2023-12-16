@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    header {
+      width: 100%;
+      height: 9.5vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      position: fixed;
+      background-color: white;
+      border-bottom: 0.5px solid grey;
+      z-index: 2;
+    }
+
+    #header-holder {
+      height: 9.5vh;
+    }
+
+    main {
+      /* width: 100px; */
+      padding: 0 40px;
+    }
+
+    #logo {
+      width: 170px;
+      height: 100%;
+    }
+
+    nav>ul {
+      width: 300px;
+      display: flex;
+      list-style: none;
+      justify-content: space-evenly;
+      font-weight: 400;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    .body-section {
+      display: flex;
+      margin-top: 0px;
+      gap: 5px;
+    }
+    #top-row{
+      position: fixed;
+      width: 70%;
+      height:  30px;
+      background-color: white;
+      padding-top: 10px;
+    }
+
+    #pagination {
+     /* border: 1px solid grey; */
+     width: 150px;
+     height: 25px;
+    }
+    .filter-section {
+      width: 200px;
+      height: 280px;
+      border: 1px solid grey;
+      margin: 5px 5px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      margin-right: 50px;
+      margin-top: 10px;
+    }
+
+    #filter-holder {
+      height: 400px;
+      width: 200px;
+      margin-left: 40px
+    }
+
+    .display-section {
+      margin: 20px 5px;
+      width: 920px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 50px;
+    }
+
+    div .product-section {
+      border: 1px solid rgb(79, 74, 74);
+      width: 270px;
+      height: 350px;
+    }    
+
+    .search-area {
+      display: flex;
+      justify-content: center;
+      margin: 0px auto;
+    }
+
+    /* Style when searched from landing page */
+  
+    .result-item {
+      width: 270px;
+      height: 350px;
+      border-radius: none;
+      border: 0.5px solid grey;
+      display: block;
+     border-radius: 3px;
+     background-color: #fff;
+     margin : 2px 0px;
+    }
+
+    .result-item:hover{
+      box-shadow: 2px 5px 40px 0px rgba(84,60,84,0.45);
+    }
+
+    .filter-brand {
+      width: 100%;
+      height: 100%;
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      gap: 10px
+    }
+
+    span {
+      color: rgb(210, 96, 96)
+    }
+
+    .productinfo{
+      display:flex;
+      flex-direction:column;
+      align-items: center;
+    }
+
+    input {
+      width: 300px;
+      height: 30px;
+      border-radius: 2px;
+      border: 1px solid grey;
+      padding: 0 10px;
+      font-size: 1rem;
+      text-indent: 3px;
+    }
+
+    .result-item:hover {
+      transform: scale(1.025);
+    }
+
+    #img {
+      width: 100%;
+      height: 70%;
+      margin-top: 2px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <img id="logo" src="/images/logoNew.png" />
+    <div class="search-area">
+      <input id="search-data" type="text" placeholder="Search" value="<%= searchItem%>" />
+      <button onclick="find()" id="searchButton">Search</button>
+    </div>
+    <nav>
+      <ul>
+        <li>About us</li>
+        <li>Guide</li>
+        <li>EX</li>
+      </ul>
+    </nav>
+  </header>
+  <div id="header-holder"></div>
+
+ 
+
+  <main>
+    <div class="body-section">
+      <div class="filter-section">
+        <p style="text-align: center; margin: 5px 0;">Sort By Brand</p><hr>
+        <div class="filter-brand" > 
+          <% if(brandResults){%>
+            <% brandResults.forEach((brand) => { %>
+              <a href="/brand?q=<%= brand.brand%>" style="text-decoration: none; color: rgb(42, 25, 25)">
+                <div>
+                  <%= brand.brand %>
+                  <span> (<%= brand.brand_count %>) </span>   
+                </div>
+              </a>
+            <% }) %>
+          <% } %>
+        </div>
+      </div>
+    <div id="filter-holder"></div>
+
+      <div class="result-sec">
+        <div id="top-row" style="display: flex; justify-content: space-between;">
+          <div class="number-result">
+            <p>over <%= totalCount %> results for <span>"<%= searchItem%>"</span>
+              <p />
+            </div>
+            <div id="pagination">
+              <button onclick="changePage('prev')">Previous</button>
+              <span>Page <span id="currentPage">
+                <%= page %>
+              </span></span>
+              <button onclick="changePage('next')">Next</button>
+            </div>
+          </div>
+          
+          <div id="bikesList" class="display-section">
+            
+          
+            <% function renderCycles(results){
+              results.forEach((result)=> { %>
+              <div class="result-item">
+                <a href="/productDetails?id=<%= result.id %>"><img id="img" src="<%= result.image %>" alt="<%= result.name %> Image" /> </a>
+                <div class="productinfo">
+                  <strong><p style="margin-top:-2px; margin-bottom: 5px;"><%=result.brand%></p></strong>
+                  <p style="height:30px; padding-left: 5px; font-size: 0.85rem; font-weight: 90;" id="name">
+                    <%= result.name %>
+                  </p>
+                  <p>Compare by <%= result.total_price%>sites</p>
+                  <p style="color: grey" id="price">
+                    £<%= result.price %>.00
+                  </p>
+                </div>  
+              </div>
+            <%   }) %>
+            <%  }
+            //rendering renderCycles
+
+            renderCycles(results);
+            
+            %>
+        </div>
+      </div>
+
+
+  </main>
+
+  <script>
+    const inputElement = document.querySelector("input");
+    const buttonElement = document.querySelector("button")
+
+    const btn = document.getElementById("priceButton");
+    
+    btn.addEventListener("click", function(){
+        results.sort(function(a, b) { //results is the array
+          return a.price - b.price; // Ascending order
+            // For descending order: return b.price - a.price;
+        });
+      
+       document.getElementById("bikesList").innerHTML = "";
+       document.getElementById("bikesList").innerHTML = renderCycles(results);
+    });
+    
+
+    // Function to navigate to the search result page
+    async function find() {
+      const inputText = inputElement.value;
+
+      if (inputText === "") {
+        console.log("Enter the bike model first");
+        return; // Exit the function if input is empty
+      }
+
+      try {
+        // Assuming you want to navigate to the search result page
+        window.location.href = `http://localhost:3000/results?search_query=${inputText}`;
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    function changePage(action) {
+
+      const searchData = document.getElementById("search-data").value;
+      const currentPageElement = document.getElementById("currentPage");
+      let currentPage = parseInt(currentPageElement.innerHTML);
+
+      if (action === 'prev' && currentPage === 1) {
+        return;
+      } else if (action === 'prev') {
+        currentPage = currentPage - 1;
+      } else if (action === 'next') {
+        currentPage = currentPage + 1;
+      }
+
+      currentPageElement.innerHTML = currentPage;
+      window.location.href = `http://localhost:3000/results?search_query=${searchData}&page=${currentPage}`;
+    }
+  </script>
+</body>
+
+</html>
