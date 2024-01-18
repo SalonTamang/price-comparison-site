@@ -1,8 +1,10 @@
-# Price-comparison
-price comparison website with web scraping
+# 🚲 Cycles price-comparison website 
+This was really an eye-opening project where I got to explore many Java frameworks such as JSoup, JUnit and Spring and had to recollect all my programming knowledge to intensively focus on its completion.
 
-Front end: Vanilla JavaScript, Node.js, Express.js
+# 💻 Technologies and frameworks used for this project
 
-Back end:  Java, Spring, Maven, Hibernate, Mysql, JSoup
+### Front end: Vanilla JavaScript, Node.js, Express.js
 
-Testing: JUnit test for Java programme, Zest test for JavaScript
+### Back end:  Java, Spring, Maven, Hibernate, Mysql, JSoup
+
+### Testing: JUnit test for Java programme, Zest test for JavaScript
